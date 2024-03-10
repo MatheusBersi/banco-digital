@@ -12,7 +12,7 @@ public abstract class ClienteBase{
 	private String cpf;
 	private String endereco;
 	private LocalDate dataNascimento;
-	private String tipoConta;
+	private String tipoCliente;
 	private String senha;
 	private int id;
 	private ContaCorrente contaCorrente;
@@ -20,13 +20,13 @@ public abstract class ClienteBase{
 
 	
 	
-	public ClienteBase(String nome, String cpf, String endereco, LocalDate dataNascimento, String tipoConta, 
+	public ClienteBase(String nome, String cpf, String endereco, LocalDate dataNascimento, String tipoCliente, 
 			String senha) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.dataNascimento = dataNascimento;
-		this.tipoConta = tipoConta;
+		this.tipoCliente = tipoCliente;
 		this.senha = senha;
 	}
 	
@@ -78,12 +78,12 @@ public abstract class ClienteBase{
 
 
 	public String getTipoConta() {
-		return tipoConta;
+		return tipoCliente;
 	}
 
 
-	public void setTipoConta(String tipoConta) {
-		this.tipoConta = tipoConta;
+	public void setTipoConta(String tipoCliente) {
+		this.tipoCliente = tipoCliente;
 	}
 
 
@@ -124,17 +124,21 @@ public abstract class ClienteBase{
 		this.contaPoupanca = contaPoupanca;
 	}
 
-	public void imprimirInformacoes() {
-		System.out.println("+----------------------------------------+");
-        System.out.printf("| Cliente ID: %-27d |\n", id);
-        System.out.printf("| Tipo: %-32s |\n", tipoConta);
-        System.out.printf("| Nome: %-31s |\n", nome);
-        System.out.printf("| CPF: %-32s |\n", cpf);
-        System.out.printf("| Endereço: %-27s |\n", endereco);
-        System.out.printf("| Data de Nascimento: %-18s |\n", dataNascimento);
-        contaCorrente.imprimirInformacoes(contaCorrente);
-        contaPoupanca.imprimirInformacoes(contaPoupanca);
-        System.out.println("+----------------------------------------+");
+	@Override
+	public String toString() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("+----------------------------------------+\n");
+	    sb.append(String.format("| Cliente ID: %-27d |\n", id));
+	    sb.append(String.format("| Tipo: %-32s |\n", tipoCliente));
+	    sb.append(String.format("| Nome: %-31s |\n", nome));
+	    sb.append(String.format("| CPF: %-32s |\n", cpf));
+	    sb.append(String.format("| Endereço: %-27s |\n", endereco));
+	    sb.append(String.format("| Data de Nascimento: %-18s |\n", dataNascimento));
+	    sb.append(contaCorrente.toString()); 
+	    sb.append(contaPoupanca.toString()); 
+	    sb.append("+----------------------------------------+\n");
+
+	    return sb.toString();
 	}
 
 

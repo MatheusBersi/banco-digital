@@ -21,8 +21,8 @@ public abstract class Conta {
 		return numAgencia;
 	}
 	
-	public void sacar() {
-		
+	public void sacar(BigDecimal valor) {
+		this.saldo = saldo.subtract(valor);
 	}
 	
 	public void depositar(BigDecimal valor) {
@@ -57,22 +57,9 @@ public abstract class Conta {
 		this.saldo = saldo;
 	}
 
-	public void imprimirInformacoes(ContaCorrente contaCorrente) {
-		System.out.println("+----------------------------------------+");
-        System.out.println("| Conta Corrente: ");
-        System.out.printf("|  Agência: %-29d |\n", numAgencia);
-        System.out.printf("|  Conta: %-31d |\n", numConta);
-        System.out.printf("|  Saldo: R$ %-26.2f |\n", saldo);
-    }
 	
-	public void imprimirInformacoes(ContaPoupanca contaPoupanca) {
-		System.out.println("+----------------------------------------+");
-        System.out.println("| Conta Poupança: ");
-        System.out.printf("|  Agência: %-29d |\n", numAgencia);
-        System.out.printf("|  Conta: %-31d |\n", numConta);
-        System.out.printf("|  Saldo: R$ %-26.2f |\n", saldo);
-        
-    }
+	
+	
 	
 	
 

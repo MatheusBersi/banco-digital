@@ -1,6 +1,6 @@
 package br.com.cdb.bancodigital.enuns;
 
-public enum TipoConta {
+public enum TipoCliente {
 	
 	COMUM,
 	SUPER,

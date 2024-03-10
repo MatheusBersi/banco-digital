@@ -30,12 +30,16 @@ public class Main {
 		contaPoupanca.initNumConta();
 		
 		contaCorrente.depositar(BigDecimal.valueOf(10));
+		contaCorrente.depositar(BigDecimal.valueOf(1000));
 		
-		listaCliente.addCliente(cliente);
+		contaPoupanca.depositar(BigDecimal.valueOf(1000));
+		contaPoupanca.render();
 		
-		cliente.imprimirInformacoes();
+		listaCliente.addCliente(cliente);	
+		
+		listaCliente.verCliente();
+		
 
-		
 		
 	}
 
