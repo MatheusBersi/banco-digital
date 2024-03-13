@@ -1,19 +1,27 @@
 package br.com.cdb.bancodigital.entity;
+import java.util.Random;
 
 public abstract class ClienteBase{
+	Random random = new Random();
 	
-	private String nome;
-	private long cpf;
-	private String endereco;
-	private int dataNascimento;
-	private String senha;
+	protected String nome;
+	protected long cpf;
+	protected String endereco;
+	protected int dataNascimento;
+	protected String senha;
+	protected int idComum;
 	
-	public ClienteBase(String nome, long cpf, String endereco, int dataNascimento, String senha) {
+	public ClienteBase(String nome, long cpf, String endereco, int dataNascimento, String senha, int idComum) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.dataNascimento = dataNascimento;
 		this.setSenha(senha);
+		this.idComum = random.nextInt(100);
+	}
+	
+	public int idcomum() {
+		return idComum;
 	}
 	
 	public String getNome() {
