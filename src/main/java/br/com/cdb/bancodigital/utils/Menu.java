@@ -1,4 +1,4 @@
-package br.com.cdb.bancodigital.controller;
+package br.com.cdb.bancodigital.utils;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ public class Menu {
 	
 		Scanner input = new Scanner(System.in);
 		
-		public void menuCadastro() {
+		public static void menuCadastro() {
 			System.out.println("Insira seu nome completo:");
 			String nome = input.nextLine();
 			
