@@ -1,6 +1,8 @@
-package br.com.cdb.bancodigital.conta;
+package br.com.cdb.bancodigital.model;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Random;
 
 public abstract class Conta {
@@ -32,6 +34,13 @@ public abstract class Conta {
 	public void pix() {
 		
 	}
+		
+	public String verSaldo() {
+		@SuppressWarnings("deprecation")
+		NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        String saldoFormatado = formato.format(saldo);
+        return saldoFormatado;
+    }
 
 	public int getNumConta() {
 		return numConta;
@@ -50,8 +59,8 @@ public abstract class Conta {
 	}
 
 	public BigDecimal getSaldo() {
-		return saldo;
-	}
+	        return saldo;
+	    }
 
 	public void setSaldo(BigDecimal saldo) {
 		this.saldo = saldo;

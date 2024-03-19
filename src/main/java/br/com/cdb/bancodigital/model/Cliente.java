@@ -1,4 +1,4 @@
-package br.com.cdb.bancodigital.entity;
+package br.com.cdb.bancodigital.model;
 
 
 import java.time.LocalDate;

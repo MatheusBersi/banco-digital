@@ -1,23 +1,24 @@
 package br.com.cdb.bancodigital.dao;
 
-import br.com.cdb.bancodigital.entity.Cliente;
+import br.com.cdb.bancodigital.model.Cliente;
 
-public class ClienteDAO implements IClienteDAO{
+public class ClienteDAO implements IClienteDAO {
+	
+	public ClienteDAO() {
+		
+	}	
 
 	@Override
-	public void addCliente(Cliente cliente) {
-		listaClientes.add(cliente);		
+	public void addCliente(Integer i, Cliente cliente) {
+		listaClientes.put(i, cliente);
 	}
-	
+
 	@Override
 	public void verCliente() {
-		for (Cliente cliente : listaClientes) {
-            System.out.println(cliente);
-        }
+
+		for (Integer chave : chaves) {
+			if (chave != null)
+				System.out.println(listaClientes.get(chave));
+		}
 	}
-	
-	
-
-	
-
 }

@@ -1,16 +1,18 @@
-package br.com.cdb.bancodigital.entity;
+package br.com.cdb.bancodigital.model;
 
 import java.time.LocalDate;
 import java.util.Random;
-
-import br.com.cdb.bancodigital.conta.ContaCorrente;
-import br.com.cdb.bancodigital.conta.ContaPoupanca;
 
 public abstract class ClienteBase{
 	
 	private String nome;
 	private String cpf;
-	private String endereco;
+	private String endRua;
+	private int endNum;
+	private String endComple;
+	private String cidade;
+	private String estado;
+	private long cep;
 	private LocalDate dataNascimento;
 	private String tipoCliente;
 	private String senha;
@@ -20,11 +22,11 @@ public abstract class ClienteBase{
 
 	
 	
-	public ClienteBase(String nome, String cpf, String endereco, LocalDate dataNascimento, String tipoCliente, 
+	public ClienteBase(String nome, String cpf, String endRua, LocalDate dataNascimento, String tipoCliente, 
 			String senha) {
 		this.nome = nome;
 		this.cpf = cpf;
-		this.endereco = endereco;
+		this.endRua = endRua;
 		this.dataNascimento = dataNascimento;
 		this.tipoCliente = tipoCliente;
 		this.senha = senha;
@@ -34,6 +36,10 @@ public abstract class ClienteBase{
 		Random random = new Random();
 		this.id = random.nextInt(100);
 		return id;
+	}
+	
+	public void exibirDados() {
+		toString();
 	}
 
 
@@ -57,14 +63,14 @@ public abstract class ClienteBase{
 	}
 
 
-	public String getEndereco() {
-		return endereco;
-	}
+//	public String getEndereco() {
+//		return endereco;
+//	}
 
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
+//	public void setEndereco(String endereco) {
+//		this.endereco = endereco;
+//	}
 
 
 	public LocalDate getDataNascimento() {
@@ -132,7 +138,7 @@ public abstract class ClienteBase{
 	    sb.append(String.format("| Tipo: %-32s |\n", tipoCliente));
 	    sb.append(String.format("| Nome: %-31s |\n", nome));
 	    sb.append(String.format("| CPF: %-32s |\n", cpf));
-	    sb.append(String.format("| Endereço: %-27s |\n", endereco));
+//	    sb.append(String.format("| Endereço: %-27s |\n", endereco));
 	    sb.append(String.format("| Data de Nascimento: %-18s |\n", dataNascimento));
 	    sb.append(contaCorrente.toString()); 
 	    sb.append(contaPoupanca.toString()); 
