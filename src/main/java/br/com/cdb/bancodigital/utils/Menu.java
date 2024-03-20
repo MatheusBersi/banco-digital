@@ -8,7 +8,7 @@ public class Menu {
 		
 	}
 	
-		Scanner input = new Scanner(System.in);
+		static Scanner input = new Scanner(System.in);
 		
 		public static void menuCadastro() {
 			System.out.println("Insira seu nome completo:");
