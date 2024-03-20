@@ -1,6 +1,5 @@
 package br.com.cdb.bancodigital.controller;
 
-import br.com.cdb.bancodigital.utils.ClienteValidator;
 import br.com.cdb.bancodigital.utils.Menu;
 
 public class Main {
@@ -10,6 +9,7 @@ public class Main {
 		Menu menu = new Menu();
 		
 		menu.menuCadastro();
+		
 
 		
 
