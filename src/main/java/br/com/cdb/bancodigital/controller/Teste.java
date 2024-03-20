@@ -16,7 +16,7 @@ public class Teste {
 
 		ClienteDAO listaCliente = new ClienteDAO();
 		
-		Menu.menuCadastro();
+//		Menu.menuCadastro();
 		
 		
 		Cliente cliente = new Cliente("Matheus Bersi", "43787772820", "Rua das Flores, 25", LocalDate.of(1996, 12, 14),
