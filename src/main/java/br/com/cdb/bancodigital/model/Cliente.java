@@ -10,6 +10,7 @@ public class Cliente extends ClienteBase{
 		super(nome, cpf, endereco, dataNascimento, tipoConta, senha);
 	}
 
+<<<<<<< HEAD
 
 	
 
@@ -21,3 +22,7 @@ public class Cliente extends ClienteBase{
 
 
 }
+=======
+}
+
+>>>>>>> a716dc9 (Cartão de credito criado)

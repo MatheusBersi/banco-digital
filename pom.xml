@@ -18,5 +18,13 @@
 			<artifactId>caelum-stella-core</artifactId>
 			<version>2.1.2</version>
 		</dependency>
+<<<<<<< HEAD
+=======
+		<dependency>
+			<groupId>br.com.cdb.bancoDigital</groupId>
+			<artifactId>TesteApenas</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+>>>>>>> a716dc9 (Cartão de credito criado)
 	</dependencies>
 </project>
