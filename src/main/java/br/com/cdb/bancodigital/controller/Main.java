@@ -1,36 +1,24 @@
 package br.com.cdb.bancodigital.controller;
 
-<<<<<<< HEAD
-import br.com.cdb.bancodigital.utils.Menu;
-=======
 import java.util.Scanner;
 
-import br.com.cdb.bancodigital.dao.CartaoDAO;
+import br.com.cdb.bancodigital.dao.CartaoCreditoDAO;
+import br.com.cdb.bancodigital.dao.CartaoDebitoDAO;
 
 //import br.com.cdb.bancodigital.utils.ClienteValidator;
->>>>>>> a716dc9 (Cartão de credito criado)
+
+/*
+ * Main de teste usado pelo Ezaú para testar os códigos do cartão!
+ */
 
 public class Main {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-
-		Menu menu = new Menu();
 		
-		menu.menuCadastro();
+Scanner input = new Scanner(System.in);
 		
-
-		
-
-	}
-
-}
-
-=======
-		
-		Scanner input = new Scanner(System.in);
-		
-		CartaoDAO gerar = new CartaoDAO();
+		CartaoCreditoDAO cartaoCreditoDao = new CartaoCreditoDAO();
+		CartaoDebitoDAO cartaoDebitoDao = new CartaoDebitoDAO();
 		
 		String conf;
 		
@@ -39,29 +27,38 @@ public class Main {
 		    do {
 		    	try {
 				System.out.println("Digite uma opção:" + "\n1 - Gerar cartao" + "\n2 - ativar cartão" 
-				+ "\n3 - desativar cartao" + "\n4 - status do cartao");
+				+ "\n3 - desativar cartao" + "\n4 - status dos cartões");
 				int escolha = input.nextInt();
 				
 		
 				if(escolha == 1) {
-					
-					gerar.gerarEVerCartao();
+					if( escolha == 1) {
+						System.out.println("1 - Gerar crédito?" + "\n2 - Gerar Debito?");
+						escolha = input.nextInt();
+					}if(escolha == 1) {
+						cartaoCreditoDao.gerarCartao();
+					}else if(escolha == 2){
+						cartaoDebitoDao.gerarCartao();
+					}
 					
 				}else if(escolha == 2) {
 					
 					System.out.println("Digite o ID do cartão que deseja ativar:");
 					int idCartao = input.nextInt();
-					gerar.ativarCartao(idCartao);
+					cartaoCreditoDao.ativarCartao(idCartao);
+					cartaoDebitoDao.ativarCartao(idCartao);
 					
 				}else if(escolha == 3) {
 					
 					System.out.println("Digite o ID do cartão que deseja desativar:");
 					int idCartao = input.nextInt();
-					gerar.desativarCartao(idCartao);
+					cartaoCreditoDao.desativarCartao(idCartao);
+					cartaoDebitoDao.desativarCartao(idCartao);
 					
 				}else if(escolha == 4) {
 					
-					gerar.verCartoesSalvos();
+					cartaoCreditoDao.verCartoesSalvos();
+					cartaoDebitoDao.verCartoesSalvos();
 				}else {
 					
 					System.out.println("Opção inválida!");
@@ -82,13 +79,6 @@ public class Main {
 			
 			System.out.println("Obrigado!");
 		
-			
-			
-			
-		
-	
-		
 		
 	}
 }
->>>>>>> a716dc9 (Cartão de credito criado)

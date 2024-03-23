@@ -1,18 +1,14 @@
 package br.com.cdb.bancodigital.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.com.cdb.bancodigital.model.CartaoCredito;
 import br.com.cdb.bancodigital.usecase.GerarCartaoCreditoUseCase;
 
-public class CartaoDAO {
+public class CartaoCreditoDAO implements ICartaoDAO{
 
-	private List<CartaoCredito> cartoesSalvos = new ArrayList<>();
 
-	public void gerarEVerCartao() {
+	public void gerarCartao() {
 
-		if (!cartoesSalvos.isEmpty()) {
+		if (!cartaoCredito.isEmpty()) {
 			System.out.println("Já existe um cartão criado. Não é possível criar outro.");
 			return;
 		}
@@ -22,24 +18,24 @@ public class CartaoDAO {
 		int numCvv = gerar.getCvv();
 		String bandeira = gerar.gerarBandeira();
 
-		int id = cartoesSalvos.size() + 1;
+		int id = cartaoCredito.size() + 1;
 
 		CartaoCredito novoCartao = new CartaoCredito(id, numCartao, bandeira, numCvv, false);
 
-		cartoesSalvos.add(novoCartao);
+		cartaoCredito.add(novoCartao);
 
-		System.out.println(novoCartao.getId() + ", " + novoCartao.toString());
+		System.out.println(novoCartao.toString());
 	}
 
 	public void verCartoesSalvos() {
-		for (CartaoCredito cartao : cartoesSalvos) {
-			System.out.println("ID do Cartão: " + cartao.getId() + ", " + cartao.statusDoCartao());
+		for (CartaoCredito cartao : cartaoCredito) {
+			System.out.println(cartao.statusDoCartao());
 		}
 
 	}
 
 	public void ativarCartao(int idCartao) {
-		for (CartaoCredito cartao : cartoesSalvos) {
+		for (CartaoCredito cartao : cartaoCredito) {
 			if (cartao.getId() == idCartao) {
 				if (cartao.isAtivo()) {
 					System.out.println("O cartão " + idCartao + " já está ativado.");
@@ -53,7 +49,7 @@ public class CartaoDAO {
 	}
 
 	public void desativarCartao(int idCartao) {
-		for (CartaoCredito cartao : cartoesSalvos) {
+		for (CartaoCredito cartao : cartaoCredito) {
 			if (cartao.getId() == idCartao) {
 				if (!cartao.isAtivo()) {
 					System.out.println("O cartão " + idCartao + " já está desativado.");

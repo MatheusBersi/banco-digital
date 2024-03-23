@@ -3,15 +3,14 @@ package br.com.cdb.bancodigital.usecase;
 import java.util.Random;
 
 import br.com.cdb.bancodigital.enuns.Bandeira;
-//import br.com.cdb.bancodigital.model.Cartao;
-import br.com.cdb.bancodigital.model.CartaoCredito;
+import br.com.cdb.bancodigital.model.CartaoDebito;
 
-public class GerarCartaoCreditoUseCase extends CartaoCredito {
-	
-	public GerarCartaoCreditoUseCase(int id, String numero, String bandeira, int cvv, boolean ativo) {
+public class GerarCartaoDebitoUseCase extends CartaoDebito {
+
+	public GerarCartaoDebitoUseCase(int id, String numero, String bandeira, int cvv, boolean ativo) {
 		super(id, numero, bandeira, cvv, ativo);
 	}
-
+	
 	private static final Random random = new Random();
 	@Override
 	public String getNumero() {
@@ -52,4 +51,5 @@ public class GerarCartaoCreditoUseCase extends CartaoCredito {
 		  Bandeira bandeira = Bandeira.gerarBandeiraAleatoria();
 		  return bandeira.name().toLowerCase();
 		}
+
 }

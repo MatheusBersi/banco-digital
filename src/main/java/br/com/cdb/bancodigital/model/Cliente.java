@@ -9,20 +9,5 @@ public class Cliente extends ClienteBase{
 			String senha) {
 		super(nome, cpf, endereco, dataNascimento, tipoConta, senha);
 	}
-
-<<<<<<< HEAD
-
-	
-
-
-
-
-
-
-
-
-}
-=======
 }
 
->>>>>>> a716dc9 (Cartão de credito criado)

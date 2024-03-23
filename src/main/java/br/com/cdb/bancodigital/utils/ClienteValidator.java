@@ -1,10 +1,6 @@
 package br.com.cdb.bancodigital.utils;
 
 import java.time.LocalDate;
-<<<<<<< HEAD
-=======
-import java.time.format.DateTimeFormatter;
->>>>>>> a716dc9 (Cartão de credito criado)
 import java.util.List;
 
 import br.com.caelum.stella.ValidationMessage;
