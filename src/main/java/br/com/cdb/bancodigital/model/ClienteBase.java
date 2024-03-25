@@ -7,12 +7,13 @@ public abstract class ClienteBase{
 	
 	private String nome;
 	private String cpf;
-	private String endRua;
-	private int endNum;
-	private String endComple;
+	private String logradouro;
+	private int numero;
+	private String complemento;
+	private String bairro;
 	private String cidade;
 	private String estado;
-	private long cep;
+	private String cep;
 	private LocalDate dataNascimento;
 	private String tipoCliente;
 	private String senha;
@@ -22,14 +23,19 @@ public abstract class ClienteBase{
 
 	
 	
-	public ClienteBase(String nome, String cpf, String endRua, LocalDate dataNascimento, String tipoCliente, 
-			String senha) {
+	public ClienteBase(String nome, String cpf, String logradouro, int numero, String complemento,
+			String bairro, String cidade, String estado, String cep, LocalDate dataNascimento, String tipoCliente) {
 		this.nome = nome;
 		this.cpf = cpf;
-		this.endRua = endRua;
+		this.logradouro = logradouro;
+		this.numero = numero;
+		this.complemento = complemento;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.cep = cep;
 		this.dataNascimento = dataNascimento;
 		this.tipoCliente = tipoCliente;
-		this.senha = senha;
 	}
 	
 	public int init() {
@@ -39,7 +45,19 @@ public abstract class ClienteBase{
 	}
 	
 	public void exibirDados() {
-		toString();
+		System.out.println("+--------------------------------------+");
+		System.out.printf("| Nome: %-30s |\n", nome);
+		System.out.printf("| CPF: %-31s |\n", cpf);
+		System.out.printf("| Data de Nascimento: %-18s |\n", dataNascimento);
+		System.out.println("| Endereço:");
+		System.out.printf("|   Logradouro: %-24s |\n", logradouro);
+		System.out.printf("|   Número: %-29d |\n", numero);
+		System.out.printf("|   Complemento: %-21s |\n", complemento);
+		System.out.printf("|   Bairro: %-27s |\n", bairro);
+		System.out.printf("|   Cidade: %-27s |\n", cidade);
+		System.out.printf("|   Estado: %-27s |\n", estado);
+		System.out.printf("|   CEP: %-31s |\n", cep);
+		System.out.println("+--------------------------------------+");
 	}
 
 
@@ -62,16 +80,61 @@ public abstract class ClienteBase{
 		this.cpf = cpf;
 	}
 
+	public String getLogradouro() {
+		return logradouro;
+	}
 
-//	public String getEndereco() {
-//		return endereco;
-//	}
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
 
+	public int getNumero() {
+		return numero;
+	}
 
-//	public void setEndereco(String endereco) {
-//		this.endereco = endereco;
-//	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
 
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getTipoCliente() {
+		return tipoCliente;
+	}
+
+	public void setTipoCliente(String tipoCliente) {
+		this.tipoCliente = tipoCliente;
+	}
 
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
@@ -138,13 +201,21 @@ public abstract class ClienteBase{
 	    sb.append(String.format("| Tipo: %-32s |\n", tipoCliente));
 	    sb.append(String.format("| Nome: %-31s |\n", nome));
 	    sb.append(String.format("| CPF: %-32s |\n", cpf));
-//	    sb.append(String.format("| Endereço: %-27s |\n", endereco));
+	    sb.append(String.format("| Endereço: %-27s |\n", logradouro));
 	    sb.append(String.format("| Data de Nascimento: %-18s |\n", dataNascimento));
 	    sb.append(contaCorrente.toString()); 
 	    sb.append(contaPoupanca.toString()); 
 	    sb.append("+----------------------------------------+\n");
 
 	    return sb.toString();
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 
 

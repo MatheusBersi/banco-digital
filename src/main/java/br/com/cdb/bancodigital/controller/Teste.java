@@ -1,31 +1,64 @@
 package br.com.cdb.bancodigital.controller;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Scanner;
 
 import br.com.cdb.bancodigital.dao.ClienteDAO;
 import br.com.cdb.bancodigital.model.Cliente;
 import br.com.cdb.bancodigital.model.ContaCorrente;
 import br.com.cdb.bancodigital.model.ContaPoupanca;
-import br.com.cdb.bancodigital.utils.ClienteValidator;
 import br.com.cdb.bancodigital.utils.Menu;
 
 public class Teste {
 
 	public static void main(String[] args) {
 
+		Scanner input = new Scanner(System.in);
+
+		Menu menu = new Menu();
 		ClienteDAO listaCliente = new ClienteDAO();
 		
-//		Menu.menuCadastro();
-		
-		
-		Cliente cliente = new Cliente("Matheus Bersi", "43787772820", "Rua das Flores, 25", LocalDate.of(1996, 12, 14),
-				"COMUM", "senha123");
-		cliente.init();
-		
-		
-		
 
+		int opcao = 0;
+		while (opcao != 9) {
+			System.out.println("Seja Bem Vindo ao AMAN BANK");
+			System.out.println("[1] Login\n" + "[2] Cadastrar\n" + "[9] Sair");
+			opcao = input.nextInt();
+			input.nextLine();
+			if (opcao == 1) {
+				menu.menuLogin();
+				// lógica para o login
+			} else if (opcao == 2) {
+				boolean cadastro = menu.menuCadastro(input);
+				if (cadastro) {
+					Cliente cliente = new Cliente(menu.getNome(), menu.getCpf(), menu.getLogradouro(), menu.getNumero(),
+							menu.getComplemento(), menu.getBairro(), menu.getCidade(), menu.getEstado(), menu.getCep(),
+							menu.getDataNascimento(), "COMUM");
+					cliente.init();
+					System.out.println("aperte 1");
+					int aperte = input.nextInt();
+					if(aperte == 1) {
+						cliente.exibirDados();
+					}
+					menu.abrirConta(input);
+				} else {
+					// lógica caso o cadastro não tenha sido realizado com sucesso
+				}
+
+			}
+		}
+
+		menu.menuLogin();
+
+//		menu.telaInicial();
+//		if(!menu.getMaiorIdade()) {
+//			menu.telaInicial();
+//		}
+
+		Cliente cliente = new Cliente(menu.getNome(), menu.getCpf(), menu.getLogradouro(), menu.getNumero(),
+				menu.getComplemento(), menu.getBairro(), menu.getCidade(), menu.getEstado(), menu.getCep(),
+				menu.getDataNascimento(), "COMUM");
+		cliente.init();
 
 		ContaCorrente contaCorrente = new ContaCorrente();
 		ContaPoupanca contaPoupanca = new ContaPoupanca();
@@ -46,26 +79,23 @@ public class Teste {
 		contaPoupanca.render();
 
 		listaCliente.addCliente(1, cliente);
-		
-		ClienteValidator.validarNome("Matheus");
-		ClienteValidator.validarCpf("10640027814");
-
-
 
 //		contaCorrente.verSaldo();
 //		contaPoupanca.verSaldo();
-		
-		if(contaCorrente.getSaldo().compareTo(BigDecimal.valueOf(1000)) >= 0 && contaCorrente.getSaldo().compareTo(BigDecimal.valueOf(10000)) < 0 
-				|| contaPoupanca.getSaldo().compareTo(BigDecimal.valueOf(1000)) >= 0 && contaPoupanca.getSaldo().compareTo(BigDecimal.valueOf(10000)) < 0) {
+
+		if (contaCorrente.getSaldo().compareTo(BigDecimal.valueOf(1000)) >= 0
+				&& contaCorrente.getSaldo().compareTo(BigDecimal.valueOf(10000)) < 0
+				|| contaPoupanca.getSaldo().compareTo(BigDecimal.valueOf(1000)) >= 0
+						&& contaPoupanca.getSaldo().compareTo(BigDecimal.valueOf(10000)) < 0) {
 			cliente.setTipoConta("SUPER");
-		}
-		else if(contaCorrente.getSaldo().compareTo(BigDecimal.valueOf(10000)) >= 0 | contaPoupanca.getSaldo().compareTo(BigDecimal.valueOf(10000)) >= 0) {
+		} else if (contaCorrente.getSaldo().compareTo(BigDecimal.valueOf(10000)) >= 0
+				| contaPoupanca.getSaldo().compareTo(BigDecimal.valueOf(10000)) >= 0) {
 			cliente.setTipoConta("PREMIUM");
 		}
-		
+
 		listaCliente.verCliente();
 		cliente.exibirDados();
-		
+
 //		 String dataString = "25-01-2024";
 
 //	        // Definindo o formato da data
@@ -83,6 +113,3 @@ public class Teste {
 	}
 
 }
-
-//incluso HashMap
-//incluso alteração de Tipos

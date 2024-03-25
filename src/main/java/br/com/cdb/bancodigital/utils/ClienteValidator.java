@@ -10,15 +10,9 @@ import br.com.cdb.bancodigital.model.Cliente;
 
 public class ClienteValidator {
 
-	private String nome;
-	private String cpf;
-	private String endRua;
-	private int endNum;
-	private String endComple;
-	private String cidade;
-	private String estado;
-	private long cep;
-	private LocalDate dataNascimento;
+	private static String nome;
+	private static String cpf;
+	private static LocalDate dataNascimento;
 
 	public ClienteValidator() {
 
@@ -52,14 +46,23 @@ public class ClienteValidator {
 
 	}
 
-//	public static boolean validarDataNascimento(LocalDate dataNascimento) {
+	public static String getNome() {
+		return nome;
+	}
 
-//		if (dataNascimento > data) {
-//			return false;
-//		} else {
-//			return true;
-//		}
-//
-//	}
+
+
+	public static String getCpf() {
+		return cpf;
+	}
+
+
+	public static LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+
+
+
 
 }
