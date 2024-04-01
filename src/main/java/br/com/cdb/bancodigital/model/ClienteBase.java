@@ -1,6 +1,7 @@
 package br.com.cdb.bancodigital.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public abstract class ClienteBase{
@@ -45,10 +46,13 @@ public abstract class ClienteBase{
 	}
 	
 	public void exibirDados() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String dataFormatada = dataNascimento.format(formatter);
+
 		System.out.println("+--------------------------------------+");
 		System.out.printf("| Nome: %-30s |\n", nome);
 		System.out.printf("| CPF: %-31s |\n", cpf);
-		System.out.printf("| Data de Nascimento: %-18s |\n", dataNascimento);
+		System.out.printf("| Data de Nascimento: %-18s |\n", dataFormatada);
 		System.out.println("| Endereço:");
 		System.out.printf("|   Logradouro: %-24s |\n", logradouro);
 		System.out.printf("|   Número: %-29d |\n", numero);
@@ -195,6 +199,8 @@ public abstract class ClienteBase{
 
 	@Override
 	public String toString() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String dataFormatada = dataNascimento.format(formatter);
 	    StringBuilder sb = new StringBuilder();
 	    sb.append("+----------------------------------------+\n");
 	    sb.append(String.format("| Cliente ID: %-27d |\n", id));
@@ -202,9 +208,13 @@ public abstract class ClienteBase{
 	    sb.append(String.format("| Nome: %-31s |\n", nome));
 	    sb.append(String.format("| CPF: %-32s |\n", cpf));
 	    sb.append(String.format("| Endereço: %-27s |\n", logradouro));
-	    sb.append(String.format("| Data de Nascimento: %-18s |\n", dataNascimento));
-	    sb.append(contaCorrente.toString()); 
-	    sb.append(contaPoupanca.toString()); 
+	    sb.append(String.format("| Data de Nascimento: %-18s |\n", dataFormatada));
+	    if(contaCorrente != null) {
+	    	sb.append(contaCorrente.toString());	
+	    }
+	    if(contaPoupanca != null) {
+	    	sb.append(contaPoupanca.toString());	
+	    }	     
 	    sb.append("+----------------------------------------+\n");
 
 	    return sb.toString();
